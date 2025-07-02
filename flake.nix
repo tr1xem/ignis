@@ -56,5 +56,8 @@
           };
         };
       }
-    );
+    )
+    // {
+      overlays.default = final: prev: { inherit (self.packages.${prev.system}) ignis; };
+    };
 }
