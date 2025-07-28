@@ -125,20 +125,14 @@ def _require_versions() -> None:
     gi.require_version("GdkPixbuf", "2.0")
 
 
-def _prepend_gvc() -> None:
-    current_dir = os.path.dirname(os.path.abspath(__file__))
+_GVC_LIB_DIR = "/usr/lib/ignis-gvc"
 
-    if not is_editable_install:
-        _prepend_to_repo(current_dir)
-    else:
-        build_libdir = os.path.join(
-            os.path.abspath(os.path.join(current_dir, "..")),
-            "build",
-            f"cp{sys.version_info.major}{sys.version_info.minor}",
-            "subprojects",
-            "gvc",
-        )
-        _prepend_to_repo(build_libdir)
+
+def _prepend_gvc() -> None:
+    if not os.path.exists(_GVC_LIB_DIR):
+        return
+
+    _prepend_to_repo(path=_GVC_LIB_DIR)
 
 
 def _init() -> None:
