@@ -56,8 +56,6 @@
                 ps:
                   with ps; [
                     python
-                    meson-python
-                    setuptools
                     ruff
                   ]
               ))
@@ -65,7 +63,7 @@
 
             postVenvCreation = ''
               pip install -r dev.txt
-              pip install -e . --no-build-isolation
+              pip install -e .
             '';
 
             GI_TYPELIB_PATH = "${ignis-gvc-pkg}/lib/ignis-gvc";

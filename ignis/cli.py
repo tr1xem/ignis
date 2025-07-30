@@ -3,7 +3,6 @@ import click
 import subprocess
 import collections
 from ignis.client import IgnisClient
-from ignis import utils
 from ignis.exceptions import WindowNotFoundError
 from typing import Any
 from gi.repository import GLib  # type: ignore
@@ -37,22 +36,18 @@ def _run_git_cmd(args: str) -> str | None:
 
 
 def get_version_message() -> str:
+    from ignis._version import __version__  # type: ignore
+
     if not is_editable_install:
-        return f"""Ignis {utils.get_ignis_version()}
-Branch: {utils.get_ignis_branch()}
-Commit: {utils.get_ignis_commit()} ({utils.get_ignis_commit_msg()})"""
+        return f"Ignis {__version__}"
     else:
         commit = _run_git_cmd("rev-parse HEAD")
         branch = _run_git_cmd("branch --show-current")
         commit_msg = _run_git_cmd("log -1 --pretty=%B")
-        return f"""Ignis {utils.get_ignis_version()}
+        return f"""Ignis {__version__}
 Editable install
 Branch: {branch}
 Commit: {commit} ({commit_msg})
-
-Version at the moment of the installation:
-Branch: {utils.get_ignis_branch()}
-Commit: {utils.get_ignis_commit()} ({utils.get_ignis_commit_msg()})
 """
 
 

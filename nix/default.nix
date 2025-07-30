@@ -2,16 +2,12 @@
   self,
   lib,
   wrapGAppsHook4,
-  pkg-config,
-  ninja,
-  git,
   glib,
   gtk4,
   gtk4-layer-shell,
   gobject-introspection,
   librsvg,
   dart-sass,
-  libpulseaudio,
   pipewire,
   networkmanager,
   gnome-bluetooth,
@@ -34,8 +30,8 @@
     click
     loguru
     rich
-    meson-python
-    setuptools
+    hatchling
+    hatch-vcs
     ;
 in
   buildPythonPackage {
@@ -44,16 +40,9 @@ in
     src = "${self}";
 
     pyproject = true;
-    build-system = [meson-python];
+    build-system = [hatchling hatch-vcs];
 
-    nativeBuildInputs = [
-      pkg-config
-      setuptools
-      ninja
-      git
-      gobject-introspection
-      wrapGAppsHook4
-    ];
+    nativeBuildInputs = [gobject-introspection wrapGAppsHook4];
 
     dependencies =
       extraPackages
@@ -66,7 +55,6 @@ in
         dart-sass
         gpu-screen-recorder
         librsvg
-        libpulseaudio
         pipewire
         networkmanager
         gnome-bluetooth
@@ -77,10 +65,6 @@ in
         loguru
         rich
       ];
-
-    mesonFlags = [
-      "-DCOMMITHASH=${self.rev or "dirty"}"
-    ];
 
     #? avoid double wrapping. we manually pass args to wrapper
     dontWrapGApps = true;

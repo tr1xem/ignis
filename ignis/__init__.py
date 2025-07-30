@@ -23,6 +23,8 @@ def _get_is_editable_install() -> bool:
 
 
 #: The Ignis version.
+# .. deprecated:: 0.6
+#     Use ignis._version module instead.
 __version__ = "0.5.dev0"
 
 #: Whether Ignis is imported during the Sphinx documentation build.
