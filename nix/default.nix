@@ -64,7 +64,7 @@ python313Packages.buildPythonPackage {
     changelog = "https://github.com/ignis-sh/ignis/releases";
     license = licenses.lgpl21Plus;
     platforms = platforms.linux;
-    maintainers = [];
+    maintainers = with maintainers; [linkfrg];
     mainProgram = "ignis";
   };
 }
