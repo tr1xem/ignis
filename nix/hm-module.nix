@@ -86,7 +86,7 @@ in {
                 prev.preFixup
                 + lib.optionalString cfg.services.audio.enable ''
                   makeWrapperArgs+=(
-                    --set GI_TYPELIB_PATH "$out/lib:${ignisGvcPackage}/lib/ignis-gvc:$GI_TYPELIB_PATH"
+                    --prefix GI_TYPELIB_PATH : "${ignisGvcPackage}/lib/ignis-gvc"
                   )
                 '';
             }

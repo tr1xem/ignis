@@ -41,7 +41,7 @@ python313Packages.buildPythonPackage {
   preFixup = ''
     makeWrapperArgs+=(
       "''${gappsWrapperArgs[@]}"
-      --set LD_LIBRARY_PATH "$out/lib:${gtk4-layer-shell}/lib:$LD_LIBRARY_PATH"
+      --prefix LD_LIBRARY_PATH : ${lib.makeLibraryPath [gtk4-layer-shell]}
     )
   '';
 
