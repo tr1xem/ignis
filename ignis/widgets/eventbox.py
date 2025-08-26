@@ -125,7 +125,10 @@ class EventBox(Box):
         self._on_click = value
 
         if not self.__click_controller:
-            self.__click_controller = self.__init_click_controller(1, self._on_click)
+            self.__click_controller = self.__init_click_controller(
+                1,
+                lambda *args, **kwargs: self.on_click(*args, **kwargs),
+            )
 
     @IgnisProperty
     def on_right_click(self) -> Callable:
@@ -140,7 +143,8 @@ class EventBox(Box):
 
         if not self.__right_click_controller:
             self.__right_click_controller = self.__init_click_controller(
-                3, self._on_right_click
+                3,
+                lambda *args, **kwargs: self.on_right_click(*args, **kwargs),
             )
 
     @IgnisProperty
@@ -156,7 +160,8 @@ class EventBox(Box):
 
         if not self.__middle_click_controller:
             self.__middle_click_controller = self.__init_click_controller(
-                2, self._on_middle_click
+                2,
+                lambda *args, **kwargs: self.on_middle_click(*args, **kwargs),
             )
 
     @IgnisProperty

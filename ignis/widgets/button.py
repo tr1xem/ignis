@@ -72,7 +72,8 @@ class Button(Gtk.Button, BaseWidget):
         self._on_right_click = value
         if not self.__right_click_controller:
             self.__right_click_controller = self.__init_controller(
-                3, self._on_right_click
+                3,
+                lambda *args, **kwargs: self.on_right_click(*args, **kwargs),
             )
 
     @IgnisProperty
@@ -87,5 +88,6 @@ class Button(Gtk.Button, BaseWidget):
         self._on_middle_click = value
         if not self.__middle_click_controller:
             self.__middle_click_controller = self.__init_controller(
-                2, self._on_middle_click
+                2,
+                lambda *args, **kwargs: self.on_middle_click(*args, **kwargs),
             )
