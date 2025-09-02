@@ -1,40 +1,43 @@
 from typing import TypeAlias
-from .window import Window
-from .label import Label
-from .button import Button
-from .box import Box
-from .calendar import Calendar
-from .scale import Scale
-from .icon import Icon
-from .picture import Picture
-from .centerbox import CenterBox
-from .revealer import Revealer
-from .scroll import Scroll
-from .entry import Entry
-from .switch import Switch
-from .separator import Separator
-from .toggle_button import ToggleButton
-from .regular_window import RegularWindow
-from .file_chooser_button import FileChooserButton
-from .file_filter import FileFilter
-from .file_dialog import FileDialog
-from .grid import Grid
-from .popover_menu import PopoverMenu
-from .eventbox import EventBox
-from .headerbar import HeaderBar
-from .listboxrow import ListBoxRow
-from .listbox import ListBox
-from .check_button import CheckButton
-from .spin_button import SpinButton
-from .dropdown import DropDown
-from .overlay import Overlay
+
+from ignis._deprecation import deprecated_getattribute
+
 from .arrow import Arrow
 from .arrow_button import ArrowButton
+from .box import Box
+from .button import Button
+from .calendar import Calendar
+from .centerbox import CenterBox
+from .check_button import CheckButton
+from .corner import Corner
+from .dropdown import DropDown
+from .entry import Entry
+from .eventbox import EventBox
+from .file_chooser_button import FileChooserButton
+from .file_dialog import FileDialog
+from .file_filter import FileFilter
+from .grid import Grid
+from .headerbar import HeaderBar
+from .icon import Icon
+from .label import Label
+from .listbox import ListBox
+from .listboxrow import ListBoxRow
+from .overlay import Overlay
+from .picture import Picture
+from .popover_menu import PopoverMenu
+from .regular_window import RegularWindow
+from .revealer import Revealer
 from .revealer_window import RevealerWindow
+from .scale import Scale
+from .scroll import Scroll
+from .separator import Separator
+from .spin_button import SpinButton
 from .stack import Stack
-from .stack_switcher import StackSwitcher
 from .stack_page import StackPage
-from ignis._deprecation import deprecated_getattribute
+from .stack_switcher import StackSwitcher
+from .switch import Switch
+from .toggle_button import ToggleButton
+from .window import Window
 
 
 @deprecated_getattribute(
@@ -49,6 +52,7 @@ class Widget:
     Scale: TypeAlias = Scale
     Icon: TypeAlias = Icon
     CenterBox: TypeAlias = CenterBox
+    Corner: TypeAlias = Corner
     Revealer: TypeAlias = Revealer
     Scroll: TypeAlias = Scroll
     Entry: TypeAlias = Entry
@@ -86,6 +90,7 @@ __all__ = [
     "Calendar",
     "CenterBox",
     "CheckButton",
+    "Corner",
     "DropDown",
     "Entry",
     "EventBox",
