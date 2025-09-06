@@ -37,7 +37,6 @@ class Fixed(Gtk.Fixed, BaseWidget):
         self,
         child: Iterable[tuple[Gtk.Widget, tuple[int, int]]] | None = None,
         name: str | None = None,
-        size: Iterable[int] | int | None = None,
         **kwargs,
     ):
         Gtk.Fixed.__init__(self)  # type: ignore
