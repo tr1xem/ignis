@@ -41,7 +41,6 @@ class Corner(Gtk.DrawingArea, BaseWidget):
     def __init__(
         self,
         orientation: Orientation = "top-right",
-        size: tuple[int, int] = (50, 50),
         **kwargs,
     ):
         Gtk.DrawingArea.__init__(self)
@@ -49,7 +48,6 @@ class Corner(Gtk.DrawingArea, BaseWidget):
 
         BaseWidget.__init__(self, **kwargs)
 
-        self.set_size_request(size[0], size[1])
         self.set_draw_func(self.__on_draw)
 
     @IgnisProperty
