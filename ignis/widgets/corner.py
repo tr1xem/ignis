@@ -6,6 +6,8 @@ from gi.repository import Gtk
 from ignis.base_widget import BaseWidget
 from ignis.gobject import IgnisProperty
 
+Orientation = Literal["top-left", "top-right", "bottom-left", "bottom-right"]
+
 
 class Corner(Gtk.DrawingArea, BaseWidget):
     """
@@ -38,9 +40,7 @@ class Corner(Gtk.DrawingArea, BaseWidget):
 
     def __init__(
         self,
-        orientation: Literal[
-            "top-left", "top-right", "bottom-left", "bottom-right"
-        ] = "top-right",
+        orientation: Orientation = "top-right",
         size: tuple[int, int] = (50, 50),
         **kwargs,
     ):
@@ -113,4 +113,3 @@ class Corner(Gtk.DrawingArea, BaseWidget):
         cr.paint()
 
         cr.restore()
-
