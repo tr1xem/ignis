@@ -17,7 +17,6 @@ class Corner(Gtk.DrawingArea, BaseWidget):
 
     Args:
         orientation: The corner orientation as a string.
-        size: Tuple of (width, height) for the corner size.
         **kwargs: Properties to set.
 
     Orientation:
@@ -40,11 +39,9 @@ class Corner(Gtk.DrawingArea, BaseWidget):
 
     def __init__(
         self,
-        orientation: Orientation = "top-right",
         **kwargs,
     ):
         Gtk.DrawingArea.__init__(self)
-        self._orientation: str = orientation
 
         BaseWidget.__init__(self, **kwargs)
 
