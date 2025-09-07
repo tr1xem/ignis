@@ -1,4 +1,3 @@
-from collections.abc import Iterable
 from dataclasses import dataclass
 
 from gi.repository import Gtk
@@ -21,7 +20,7 @@ class Fixed(Gtk.Fixed, BaseWidget):
     manually using absolute coordinates.
 
     Args:
-        child: An iterable of FixedChild objects for positioned children.
+        child: A list of FixedChild objects for positioned children.
         name: Optional name for the widget.
         size: Size specification for the container.
         **kwargs: Properties to set.
@@ -43,19 +42,14 @@ class Fixed(Gtk.Fixed, BaseWidget):
 
     def __init__(
         self,
-        child: Iterable[FixedChild] | None = None,
-        name: str | None = None,
         **kwargs,
     ):
         Gtk.Fixed.__init__(self)  # type: ignore
+        self._child = []
         BaseWidget.__init__(
             self,
             **kwargs,
         )
-
-        self._child = list(child or [])
-        for child_item in self._child:
-            self.put(child_item.widget, child_item.x, child_item.y)
 
     @property
     def child(self) -> list[FixedChild]:
@@ -63,13 +57,11 @@ class Fixed(Gtk.Fixed, BaseWidget):
         return self._child
 
     @child.setter
-    def child(self, value: Iterable[FixedChild] | None) -> None:
+    def child(self, value: list[FixedChild] | None) -> None:
         """Set the list of child widgets with their positions."""
-        # Remove existing children
         for child_item in self._child:
             self.remove(child_item.widget)
 
-        # Set new children
-        self._child = list(value or [])
+        self._child = value or []
         for child_item in self._child:
             self.put(child_item.widget, child_item.x, child_item.y)
