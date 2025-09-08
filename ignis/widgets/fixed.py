@@ -21,8 +21,6 @@ class Fixed(Gtk.Fixed, BaseWidget):
 
     Args:
         child: A list of FixedChild objects for positioned children.
-        name: Optional name for the widget.
-        size: Size specification for the container.
         **kwargs: Properties to set.
 
     .. code-block:: python
