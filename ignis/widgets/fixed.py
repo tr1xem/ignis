@@ -33,7 +33,6 @@ class Fixed(Gtk.Fixed, BaseWidget):
                 FixedChild(widget=Button(label="Center"), x=100, y=50),
                 FixedChild(widget=Icon(image="settings"), x=200, y=200)
             ],
-            css_classes=["fixed-container"]
         )
     """
 
