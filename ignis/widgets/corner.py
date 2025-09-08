@@ -18,11 +18,6 @@ class Corner(Gtk.DrawingArea, BaseWidget):
     Args:
         **kwargs: Properties to set.
 
-    Orientation:
-        - top-left
-        - top-right
-        - bottom-left
-        - bottom-right
 
     .. code-block:: python
 
