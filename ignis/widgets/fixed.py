@@ -2,10 +2,20 @@ from dataclasses import dataclass
 
 from gi.repository import Gtk
 from ignis.base_widget import BaseWidget
+from ignis.gobject import IgnisProperty
 
 
 @dataclass
 class FixedChild:
+    """
+    A data class representing a child widget positioned in a Fixed container.
+
+    Args:
+        widget: The GTK widget to be positioned.
+        x: The horizontal position (x-coordinate) in pixels.
+        y: The vertical position (y-coordinate) in pixels.
+    """
+
     widget: Gtk.Widget
     x: int
     y: int
@@ -48,7 +58,7 @@ class Fixed(Gtk.Fixed, BaseWidget):
             **kwargs,
         )
 
-    @property
+    @IgnisProperty
     def child(self) -> list[FixedChild]:
         """The list of child widgets with their positions."""
         return self._child
