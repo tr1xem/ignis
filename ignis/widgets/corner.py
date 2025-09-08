@@ -16,7 +16,6 @@ class Corner(Gtk.DrawingArea, BaseWidget):
     A corner widget that renders rounded corners for use in bars and panels.
 
     Args:
-        orientation: The corner orientation as a string.
         **kwargs: Properties to set.
 
     Orientation:
