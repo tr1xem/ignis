@@ -58,7 +58,6 @@ class Fixed(Gtk.Fixed, BaseWidget):
 
     @child.setter
     def child(self, value: list[FixedChild] | None) -> None:
-        """Set the list of child widgets with their positions."""
         for child_item in self._child:
             self.remove(child_item.widget)
 
