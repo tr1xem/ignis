@@ -23,8 +23,6 @@ class Corner(Gtk.DrawingArea, BaseWidget):
 
         Corner(
             orientation="top-left",
-            size=(20, 20),
-            class_name="corner-widget"
         )
     """
 
