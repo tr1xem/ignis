@@ -42,7 +42,7 @@ class Corner(Gtk.DrawingArea, BaseWidget):
         **kwargs,
     ):
         Gtk.DrawingArea.__init__(self)
-
+self._orientation: Orientation = "top-left"
         BaseWidget.__init__(self, **kwargs)
 
         self.set_draw_func(self.__on_draw)
