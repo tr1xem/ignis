@@ -53,7 +53,7 @@ class Fixed(Gtk.Fixed, BaseWidget):
 
     @property
     def child(self) -> list[FixedChild]:
-        """Get the list of child widgets with their positions."""
+        """The list of child widgets with their positions."""
         return self._child
 
     @child.setter
