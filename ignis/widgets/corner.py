@@ -20,6 +20,7 @@ class Corner(Gtk.DrawingArea, BaseWidget):
 
 
     .. code-block:: python
+
         from ignis import widgets
 
         widgets.Corner(
