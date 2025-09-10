@@ -11,11 +11,11 @@ class Corner(Gtk.DrawingArea, BaseWidget):
     """
     Bases: :class:`Gtk.DrawingArea`
 
-    A corner widget that renders rounded corners for use in bars and panels.
+    A corner widget that renders rounded corners.
+    Useful in bars and panels.
 
     Args:
         **kwargs: Properties to set.
-
 
     .. code-block:: python
 
@@ -51,6 +51,8 @@ class Corner(Gtk.DrawingArea, BaseWidget):
             - top-right
             - bottom-left
             - bottom-right
+
+        Default: ``top-left``
         """
         return self._orientation
 
