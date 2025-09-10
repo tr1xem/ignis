@@ -1,8 +1,7 @@
-from typing import Literal
-
 import cairo
-from gi.repository import Gtk
 
+from typing import Literal
+from gi.repository import Gtk  # type: ignore
 from ignis.base_widget import BaseWidget
 from ignis.gobject import IgnisProperty
 
