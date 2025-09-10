@@ -34,10 +34,7 @@ class Corner(Gtk.DrawingArea, BaseWidget):
     __gtype_name__ = "IgnisCorner"
     __gproperties__ = {**BaseWidget.gproperties}
 
-    def __init__(
-        self,
-        **kwargs,
-    ):
+    def __init__(self, **kwargs):
         Gtk.DrawingArea.__init__(self)
         self._orientation: Orientation = "top-left"
         BaseWidget.__init__(self, **kwargs)
@@ -68,13 +65,10 @@ class Corner(Gtk.DrawingArea, BaseWidget):
         cr: cairo.Context,
         width: int,
         height: int,
-        user_data=None,
+        *_,
     ) -> None:
-        color = self.get_color()
-
         cr.save()
 
-        # Draw corner shape based on orientation string
         match self._orientation:
             case "top-left":
                 cr.move_to(0, height)
@@ -100,8 +94,8 @@ class Corner(Gtk.DrawingArea, BaseWidget):
         cr.close_path()
         cr.clip()
 
-        if color:
+        if color := self.get_color():
             cr.set_source_rgba(color.red, color.green, color.blue, color.alpha)
-        cr.paint()
 
+        cr.paint()
         cr.restore()
