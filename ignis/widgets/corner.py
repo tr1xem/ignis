@@ -1,5 +1,4 @@
 import cairo
-
 from typing import Literal
 from gi.repository import Gtk  # type: ignore
 from ignis.base_widget import BaseWidget
@@ -41,7 +40,7 @@ class Corner(Gtk.DrawingArea, BaseWidget):
         self.set_draw_func(self.__on_draw)
 
     @IgnisProperty
-    def orientation(self) -> str:
+    def orientation(self) -> Orientation:
         """
         The corner orientation.
 
@@ -54,7 +53,7 @@ class Corner(Gtk.DrawingArea, BaseWidget):
         return self._orientation
 
     @orientation.setter
-    def orientation(self, value) -> None:
+    def orientation(self, value: Orientation) -> None:
         self._orientation = value
         self.queue_draw()
 
