@@ -23,6 +23,11 @@ class Corner(Gtk.DrawingArea, BaseWidget):
 
         widgets.Corner(
             orientation="top-left",
+            # It's mandatory to explicitly set the width and the height
+            # Otherwise, the widget will be invisible
+            # Alternativly, you can set them in CSS using `min-width` and `min-height` properties
+            width_request=30,
+            height_request=30,
         )
     """
 
