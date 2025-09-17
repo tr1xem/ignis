@@ -34,7 +34,7 @@ from .revealer_window import RevealerWindow
 from .stack import Stack
 from .stack_switcher import StackSwitcher
 from .stack_page import StackPage
-from .fixed import Fixed
+from .fixed import Fixed, FixedChild
 from ignis._deprecation import deprecated_getattribute
 
 
@@ -95,6 +95,7 @@ __all__ = [
     "FileDialog",
     "FileFilter",
     "Fixed",
+    "FixedChild",
     "Grid",
     "HeaderBar",
     "Icon",

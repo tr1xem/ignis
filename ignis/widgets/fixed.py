@@ -9,15 +9,15 @@ from ignis.gobject import IgnisProperty
 class FixedChild:
     """
     A data class representing a child widget positioned in a Fixed container.
-
-    Args:
-        widget: The GTK widget to be positioned.
-        x: The horizontal position (x-coordinate) in pixels.
-        y: The vertical position (y-coordinate) in pixels.
     """
 
+    #: The GTK widget to be positioned.
     widget: Gtk.Widget
+
+    #: The horizontal position (x-coordinate) in pixels.
     x: int
+
+    #: The vertical position (y-coordinate) in pixels.
     y: int
 
 
@@ -26,20 +26,32 @@ class Fixed(Gtk.Fixed, BaseWidget):
     Bases: :class:`Gtk.Fixed`
 
     A fixed container widget that allows positioning child widgets at specific coordinates.
-    Unlike other container widgets that use automatic layout, Fixed positions children
-    manually using absolute coordinates.
+    Unlike other containers with an automatic layout, ``Fixed`` use absolute coordinates.
 
     Args:
-        child: A list of FixedChild objects for positioned children.
         **kwargs: Properties to set.
 
     .. code-block:: python
 
-        Fixed(
+        from ignis import widgets
+
+        widgets.Fixed(
             child=[
-                FixedChild(widget=Label(label="Top Left"), x=10, y=10),
-                FixedChild(widget=Button(label="Center"), x=100, y=50),
-                FixedChild(widget=Icon(image="settings"), x=200, y=200)
+                widgets.FixedChild(
+                    widget=widgets.Label(label="Top Left"),
+                    x=10,
+                    y=10
+                ),
+                widgets.FixedChild(
+                    widget=widgets.Button(label="Center"),
+                    x=100,
+                    y=50
+                ),
+                widgets.FixedChild(
+                    widget=widgets.Icon(image="settings"),
+                    x=200,
+                    y=200
+                )
             ],
         )
     """
@@ -47,16 +59,10 @@ class Fixed(Gtk.Fixed, BaseWidget):
     __gtype_name__ = "IgnisFixed"
     __gproperties__ = {**BaseWidget.gproperties}
 
-    def __init__(
-        self,
-        **kwargs,
-    ):
-        Gtk.Fixed.__init__(self)  # type: ignore
-        self._child = []
-        BaseWidget.__init__(
-            self,
-            **kwargs,
-        )
+    def __init__(self, **kwargs):
+        Gtk.Fixed.__init__(self)
+        self._child: list[FixedChild] = []
+        BaseWidget.__init__(self, **kwargs)
 
     @IgnisProperty
     def child(self) -> list[FixedChild]:
@@ -64,7 +70,7 @@ class Fixed(Gtk.Fixed, BaseWidget):
         return self._child
 
     @child.setter
-    def child(self, value: list[FixedChild] | None) -> None:
+    def child(self, value: list[FixedChild]) -> None:
         for child_item in self._child:
             self.remove(child_item.widget)
 
